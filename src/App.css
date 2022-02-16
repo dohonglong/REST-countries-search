@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.ag-theme-alpine .ag-header-cell-label {
+  justify-content: center;
+  font-size: medium;
+}
+
+.ag-theme-alpine .ag-ltr .ag-cell {
+  font-size: medium;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
