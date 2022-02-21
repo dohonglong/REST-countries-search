@@ -1,6 +1,6 @@
 import { TableHead, TableRow, TableCell } from "@mui/material";
 
-const columns = ["Flag", "Name", "Region", "Language", "Population"];
+const columns = ["Flag", "Name", "Popuation", "Region", "Languages"];
 
 function CountryTableHead() {
   return (

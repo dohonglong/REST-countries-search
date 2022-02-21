@@ -4,13 +4,14 @@ import { TableContainer } from "@mui/material";
 
 import useCountries from "../../custom-hooks/useCountries";
 
+import "../../App.css";
 import CountryTableHead from "./TableHead";
 import CountryTableBody from "./TableBody";
 import CountryTablePagination from "./TablePagination";
 
 function CountryTable() {
   const [countries, error] = useCountries();
-  const [rowsPerPage, setRowsPerPage] = useState(12);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [page, setPage] = useState(0);
 
   /* Catch error */
@@ -19,12 +20,13 @@ function CountryTable() {
   }
 
   return (
-    <div>
+    <div className="container">
+      <h1>COUNTRY SEARCH</h1>
       <TableContainer>
-        <Table sx={{ width: "100%" }}>
+        <Table>
           <colgroup>
-            <col style={{ width: "25%", border: "1px solid black" }} />
             <col style={{ width: "10%", border: "1px solid black" }} />
+            <col style={{ width: "25%", border: "1px solid black" }} />
             <col style={{ width: "10%", border: "1px solid black" }} />
             <col style={{ width: "10%", border: "1px solid black" }} />
             <col style={{ width: "auto", border: "1px solid black" }} />
