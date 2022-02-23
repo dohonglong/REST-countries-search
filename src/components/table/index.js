@@ -29,6 +29,7 @@ function CountryTable() {
             <col style={{ width: "25%", border: "1px solid black" }} />
             <col style={{ width: "10%", border: "1px solid black" }} />
             <col style={{ width: "10%", border: "1px solid black" }} />
+            <col style={{ width: "40%", border: "1px solid black" }} />
             <col style={{ width: "auto", border: "1px solid black" }} />
           </colgroup>
           <CountryTableHead />

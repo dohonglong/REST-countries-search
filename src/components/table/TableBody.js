@@ -1,7 +1,17 @@
 import { TableBody, TableRow, TableCell } from "@mui/material";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import { useDispatch } from "react-redux";
+
+import { addFavorite } from "../../redux/action";
 
 function CountryTableBody({ countries, page, rowsPerPage }) {
+  const dispatch = useDispatch();
+
+  const addToFavorite = (countryName) => {
+    dispatch(addFavorite(countryName));
+  };
+
   return (
     <TableBody>
       {countries
@@ -22,6 +32,11 @@ function CountryTableBody({ countries, page, rowsPerPage }) {
               {country.languages && Object.keys(country.languages).length > 0
                 ? Object.values(country.languages).join(", ")
                 : "none"}
+            </TableCell>
+            <TableCell>
+              <Button onClick={() => addToFavorite(country.name.common)}>
+                Favorite
+              </Button>
             </TableCell>
           </TableRow>
         ))}
