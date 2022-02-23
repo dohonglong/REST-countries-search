@@ -4,21 +4,21 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import reducer from "./reducer";
 
 const initialState = {
-  favoriteCountries: [],
+  bookmarkCountries: [],
 };
 
 const storeFactory = () => {
-  const favoriteList = localStorage.getItem("countries");
-  if (favoriteList) {
-    initialState.favoriteCountries = JSON.parse(favoriteList);
+  const bookmarkList = localStorage.getItem("countries");
+  if (bookmarkList) {
+    initialState.bookmarkCountries = JSON.parse(bookmarkList);
   }
 
   const store = createStore(reducer, initialState, composeWithDevTools());
 
   store.subscribe(() => {
     const currentState = store.getState();
-    const favoriteList = currentState.favoriteCountries;
-    localStorage.setItem("countries", JSON.stringify(favoriteList));
+    const bookmarkList = currentState.bookmarkCountries;
+    localStorage.setItem("countries", JSON.stringify(bookmarkList));
   });
 
   return store;

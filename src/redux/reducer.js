@@ -1,14 +1,14 @@
-import { ADD_FAVORITE, REMOVE_FAVORITE } from "./action";
+import { ADD_BOOKMARK, REMOVE_BOOKMARK } from "./action";
 
 const initialState = {
-  favoriteCountries: [],
+  bookmarkCountries: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_FAVORITE:
+    case ADD_BOOKMARK:
       const countryName = action.payload;
-      const isInList = state.favoriteCountries.some(
+      const isInList = state.bookmarkCountries.some(
         (name) => name === countryName
       );
       if (isInList) {
@@ -16,17 +16,17 @@ const reducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        favoriteCountries: [...state.favoriteCountries, countryName],
+        bookmarkCountries: [...state.bookmarkCountries, countryName],
       };
 
-    case REMOVE_FAVORITE:
+    case REMOVE_BOOKMARK:
       const removeCountryName = action.payload;
-      const newList = state.favoriteCountries.filter(
+      const newList = state.bookmarkCountries.filter(
         (name) => name !== removeCountryName
       );
       return {
         ...state,
-        favoriteCountries: newList,
+        bookmarkCountries: newList,
       };
 
     default:

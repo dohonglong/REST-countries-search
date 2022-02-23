@@ -1,16 +1,16 @@
-export const ADD_FAVORITE = "ADD_FAVORITE";
-export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const ADD_BOOKMARK = "ADD_BOOKMARK";
+export const REMOVE_BOOKMARK = "REMOVE_BOOKMARK";
 
-export const addFavorite = (countryName) => {
+export const addBookmark = (countryName) => {
   return {
-    type: ADD_FAVORITE,
+    type: ADD_BOOKMARK,
     payload: countryName,
   };
 };
 
-export const removeFavorite = (countryName) => {
+export const removeBookmark = (countryName) => {
   return {
-    type: REMOVE_FAVORITE,
+    type: REMOVE_BOOKMARK,
     payload: countryName,
   };
 };

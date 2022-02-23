@@ -6,7 +6,7 @@ const columns = [
   "Popuation",
   "Region",
   "Languages",
-  "Favorites",
+  "Boomarks",
 ];
 
 function CountryTableHead() {

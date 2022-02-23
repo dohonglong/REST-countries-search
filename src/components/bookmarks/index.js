@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-function Favorites() {
-  const favoriteCountries = useSelector((state) => state.favoriteCountries);
+function Bookmarks() {
+  const bookmarkCountries = useSelector((state) => state.bookmarkCountries);
   return (
     <div>
       <ul>
-        {favoriteCountries.map((country) => (
+        {bookmarkCountries.map((country) => (
           <li key={country}>{country}</li>
         ))}
       </ul>
@@ -14,4 +14,4 @@ function Favorites() {
   );
 }
 
-export default Favorites;
+export default Bookmarks;

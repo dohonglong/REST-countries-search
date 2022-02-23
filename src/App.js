@@ -3,16 +3,17 @@ import "./App.css";
 
 import CountryTable from "./components/table";
 import CountryPage from "./components/country";
-import Favorites from "./components/favorites";
+import Bookmarks from "./components/bookmarks";
 
 function App() {
   return (
     <div className="App">
-      <Link to="/country/favorites">Favorites</Link>
+      <Link to="/">Home </Link>
+      <Link to="/country/bookmarks">Bookmarks</Link>
       <Routes>
         <Route path="/" element={<CountryTable />} />
         <Route path="/country/:name" element={<CountryPage />} />
-        <Route path="/country/favorites" element={<Favorites />} />
+        <Route path="/country/bookmarks" element={<Bookmarks />} />
       </Routes>
     </div>
   );

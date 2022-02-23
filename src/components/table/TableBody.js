@@ -1,15 +1,26 @@
 import { TableBody, TableRow, TableCell } from "@mui/material";
 import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
-import { useDispatch } from "react-redux";
+import { Button } from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
 
-import { addFavorite } from "../../redux/action";
+import "../../App.css";
+
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
+import { addBookmark } from "../../redux/action";
+import { removeBookmark } from "../../redux/action";
 
 function CountryTableBody({ countries, page, rowsPerPage }) {
+  const bookmarkCountries = useSelector((state) => state.bookmarkCountries);
   const dispatch = useDispatch();
 
-  const addToFavorite = (countryName) => {
-    dispatch(addFavorite(countryName));
+  const ToggleBookmark = (countryName) => {
+    if (bookmarkCountries.includes(countryName)) {
+      dispatch(removeBookmark(countryName));
+    } else {
+      dispatch(addBookmark(countryName));
+    }
   };
 
   return (
@@ -33,9 +44,13 @@ function CountryTableBody({ countries, page, rowsPerPage }) {
                 ? Object.values(country.languages).join(", ")
                 : "none"}
             </TableCell>
-            <TableCell>
-              <Button onClick={() => addToFavorite(country.name.common)}>
-                Favorite
+            <TableCell align="center">
+              <Button onClick={() => ToggleBookmark(country.name.common)}>
+                {bookmarkCountries.includes(country.name.common) ? (
+                  <StarIcon color="default" />
+                ) : (
+                  <StarIcon color="disabled" />
+                )}
               </Button>
             </TableCell>
           </TableRow>
@@ -45,5 +60,3 @@ function CountryTableBody({ countries, page, rowsPerPage }) {
 }
 
 export default CountryTableBody;
-
-/* .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) */
