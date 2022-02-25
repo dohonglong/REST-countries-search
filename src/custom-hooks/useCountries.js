@@ -18,7 +18,7 @@ const useCountries = () => {
     fetchCountries();
   }, []);
 
-  return [countries, error];
+  return [countries, error, setCountries];
 };
 
 export default useCountries;

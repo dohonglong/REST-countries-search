@@ -8,7 +8,6 @@ import Bookmarks from "./components/bookmarks";
 function App() {
   return (
     <div className="App">
-      <Link to="/">Home </Link>
       <Link to="/country/bookmarks">Bookmarks</Link>
       <Routes>
         <Route path="/" element={<CountryTable />} />

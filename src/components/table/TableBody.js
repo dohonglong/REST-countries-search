@@ -5,11 +5,9 @@ import StarIcon from "@mui/icons-material/Star";
 
 import "../../App.css";
 
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { addBookmark } from "../../redux/action";
-import { removeBookmark } from "../../redux/action";
+import { addBookmark, removeBookmark } from "../../redux/action";
 
 function CountryTableBody({ countries, page, rowsPerPage }) {
   const bookmarkCountries = useSelector((state) => state.bookmarkCountries);
@@ -23,6 +21,15 @@ function CountryTableBody({ countries, page, rowsPerPage }) {
     }
   };
 
+  const linkStyle = {
+    color: "blue",
+    textDecoration: "none",
+  };
+  const tableCellStyle = {
+    fontSize: "15px",
+    fontFamily: "Trebuchet MS",
+  };
+
   return (
     <TableBody>
       {countries
@@ -30,20 +37,25 @@ function CountryTableBody({ countries, page, rowsPerPage }) {
         .map((country) => (
           <TableRow key={country.name.common}>
             <TableCell align="center">
-              <img src={country.flags.png} height={30} alt="Flag" />
+              <img src={country.flags.png} height={30} width={45} alt="Flag" />
             </TableCell>
-            <TableCell align="left">
-              <Link to={`/country/${country.name.common}`}>
+            <TableCell style={tableCellStyle}>
+              <Link to={`/country/${country.name.common}`} style={linkStyle}>
                 {country.name.common}
               </Link>
             </TableCell>
-            <TableCell align="center">{country.population}</TableCell>
-            <TableCell align="center">{country.region}</TableCell>
-            <TableCell align="left">
-              {country.languages && Object.keys(country.languages).length > 0
-                ? Object.values(country.languages).join(", ")
-                : "none"}
+            <TableCell style={tableCellStyle}>
+              {country.capital && Object.keys(country.capital).length > 0
+                ? Object.values(country.capital).join(", ")
+                : "N/A"}
             </TableCell>
+            <TableCell style={tableCellStyle}>{country.region}</TableCell>
+            <TableCell align="right" style={tableCellStyle}>
+              {country.population
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+            </TableCell>
+
             <TableCell align="center">
               <Button onClick={() => ToggleBookmark(country.name.common)}>
                 {bookmarkCountries.includes(country.name.common) ? (

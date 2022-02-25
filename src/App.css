@@ -1,3 +1,6 @@
+body {
+  background-color: #f2f3f4;
+}
 .App {
   text-align: center;
 }
@@ -5,6 +8,20 @@
 .container {
   width: 70%;
   margin: auto;
+}
+.container_header {
+  padding-bottom: 30px;
+}
+
+.title {
+  font-size: 48px;
+}
+.subtitle {
+  font-weight: normal;
+}
+
+.button-action {
+  padding: 30px;
 }
 
 .App-logo {
