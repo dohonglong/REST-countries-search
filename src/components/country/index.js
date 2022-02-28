@@ -1,18 +1,16 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { TableContainer, Table } from "@mui/material";
-import Button from "@mui/material/Button";
 
 import useCountry from "../../custom-hooks/useCountry";
 
 import "../../App.css";
-import DetailCountryTableBody from "./DetailCountryTableBody";
+import CountryDetail from "./CountryDetail";
+import GoBackButton from "../buttons/GoBackButton";
 
 function CountryPage() {
   const { name } = useParams();
   const [country, error] = useCountry(name);
-  const navigate = useNavigate();
 
   /* Catch error */
   if (error) {
@@ -21,10 +19,6 @@ function CountryPage() {
 
   if (!country) {
     return <p>Loading...</p>;
-  }
-
-  function handleClick() {
-    navigate("/");
   }
 
   const tableStyle = {
@@ -45,13 +39,9 @@ function CountryPage() {
             <col style={{ width: "25%" }} />
             <col style={{ width: "auto" }} />
           </colgroup>
-          <DetailCountryTableBody country={country} />
+          <CountryDetail country={country} />
         </Table>
-        <div className="button-action">
-          <Button size="large" variant="contained" onClick={handleClick}>
-            Go back
-          </Button>
-        </div>
+        <GoBackButton />
       </TableContainer>
     </div>
   );

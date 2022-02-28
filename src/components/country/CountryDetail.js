@@ -1,6 +1,6 @@
 import { TableBody, TableRow, TableCell } from "@mui/material";
 
-function DetailCountryTableBody({ country }) {
+function CountryDetail({ country }) {
   return (
     <TableBody>
       <TableRow>
@@ -53,4 +53,4 @@ function DetailCountryTableBody({ country }) {
   );
 }
 
-export default DetailCountryTableBody;
+export default CountryDetail;

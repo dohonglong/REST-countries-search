@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import CountryTable from "./components/table";
@@ -8,7 +8,6 @@ import Bookmarks from "./components/bookmarks";
 function App() {
   return (
     <div className="App">
-      <Link to="/country/bookmarks">Bookmarks</Link>
       <Routes>
         <Route path="/" element={<CountryTable />} />
         <Route path="/country/:name" element={<CountryPage />} />

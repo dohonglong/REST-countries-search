@@ -9,7 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { addBookmark, removeBookmark } from "../../redux/action";
 
-function CountryTableBody({ countries, page, rowsPerPage }) {
+function CountryTableBody({
+  countries,
+  page,
+  rowsPerPage,
+  order,
+  orderBy,
+  stableSort,
+  getComparator,
+}) {
   const bookmarkCountries = useSelector((state) => state.bookmarkCountries);
   const dispatch = useDispatch();
 
@@ -23,6 +31,7 @@ function CountryTableBody({ countries, page, rowsPerPage }) {
 
   const linkStyle = {
     color: "blue",
+    fontWeight: "bold",
     textDecoration: "none",
   };
   const tableCellStyle = {
@@ -32,7 +41,7 @@ function CountryTableBody({ countries, page, rowsPerPage }) {
 
   return (
     <TableBody>
-      {countries
+      {stableSort(countries, getComparator(order, orderBy))
         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
         .map((country) => (
           <TableRow key={country.name.common}>
@@ -55,11 +64,10 @@ function CountryTableBody({ countries, page, rowsPerPage }) {
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
             </TableCell>
-
             <TableCell align="center">
               <Button onClick={() => ToggleBookmark(country.name.common)}>
                 {bookmarkCountries.includes(country.name.common) ? (
-                  <StarIcon color="default" />
+                  <StarIcon color="active" />
                 ) : (
                   <StarIcon color="disabled" />
                 )}
