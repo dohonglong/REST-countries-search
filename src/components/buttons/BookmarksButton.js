@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
 
 import { Button } from "@mui/material";
 
@@ -9,7 +10,7 @@ const BookmarksButton = () => {
   };
   return (
     <div className="button-action">
-      <Button variant="contained">
+      <Button size="large" variant="contained" startIcon={<StarIcon />}>
         <Link to="/country/bookmarks" style={linkStyle}>
           Bookmarks
         </Link>

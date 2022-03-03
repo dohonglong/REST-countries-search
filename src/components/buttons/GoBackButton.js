@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 
 import { Button } from "@mui/material";
 
@@ -11,7 +12,12 @@ const GoBackButton = () => {
 
   return (
     <div className="button-action">
-      <Button size="large" variant="contained" onClick={handleClick}>
+      <Button
+        size="large"
+        variant="contained"
+        onClick={handleClick}
+        startIcon={<HomeIcon />}
+      >
         Go back
       </Button>
     </div>

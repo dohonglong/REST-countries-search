@@ -1,4 +1,4 @@
-import { ADD_BOOKMARK, REMOVE_BOOKMARK } from "./action";
+import { ADD_BOOKMARK, REMOVE_BOOKMARK, CLEAR_BOOKMARK } from "./action";
 
 const initialState = {
   bookmarkCountries: [],
@@ -27,6 +27,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         bookmarkCountries: newList,
+      };
+
+    case CLEAR_BOOKMARK:
+      return {
+        ...state,
+        bookmarkCountries: [],
       };
 
     default:

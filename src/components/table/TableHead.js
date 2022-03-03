@@ -13,8 +13,19 @@ function CountryTableHead({ orderBy, order, handleRequestSort }) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell align="center" key="Flag" sx={style}>
-          Flag
+        <TableCell
+          align="center"
+          key="Flag"
+          sx={style}
+          sortDirection={orderBy === "name" ? order : false}
+        >
+          <TableSortLabel
+            active={orderBy === "name"}
+            direction={orderBy === "name" ? order : "asc"}
+            onClick={createSortHandler("name")}
+          >
+            Flag
+          </TableSortLabel>
         </TableCell>
         <TableCell
           align="center"
