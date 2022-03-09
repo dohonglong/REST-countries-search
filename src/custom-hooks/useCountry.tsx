@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { Country } from "../types";
+
+type Return = [Country | null, Error | null];
+
 // This hook is used to fetch one specific country
-const useCountry = (name) => {
-  const [country, setCountry] = useState(null);
-  const [error, setError] = useState(null);
+const useCountry = (name: string): Return => {
+  const [country, setCountry] = useState<Country | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -13,7 +17,7 @@ const useCountry = (name) => {
         const data = await response.json();
         setCountry(data[0]);
       } catch (error) {
-        setError(error);
+        setError(error as Error);
       }
     };
 

@@ -10,6 +10,7 @@ import CountryTableBody from "./TableBody";
 import CountryTablePagination from "./TablePagination";
 import SearchBar from "./SearchBar";
 import BookmarksButton from "../buttons/BookmarksButton";
+import { Country, GetComparator, OrderBy } from "../../types";
 
 function CountryTable() {
   const [countries, error] = useCountries();
@@ -27,7 +28,7 @@ function CountryTable() {
     setOrderBy(property);
   };
 
-  function descendingComparator(a, b, orderBy) {
+  function descendingComparator(a: Country, b: Country, orderBy: OrderBy) {
     if (orderBy === "name") {
       if (b.name.common < a.name.common) {
         return -1;
@@ -57,13 +58,13 @@ function CountryTable() {
     }
   }
 
-  function getComparator(order, orderBy) {
+  function getComparator(order: string, orderBy: OrderBy) {
     return order === "desc"
-      ? (a, b) => descendingComparator(a, b, orderBy)
-      : (a, b) => -descendingComparator(a, b, orderBy);
+      ? (a: Country, b: Country) => descendingComparator(a, b, orderBy)
+      : (a: Country, b: Country) => -descendingComparator(a, b, orderBy);
   }
 
-  function stableSort(countries, comparator) {
+  function stableSort(countries: Country[], comparator: GetComparator) {
     const stabilizedThis = countries.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
       const order = comparator(a[0], b[0]);

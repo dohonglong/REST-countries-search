@@ -1,13 +1,23 @@
-import { TableBody, TableRow, TableCell } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { TableBody, TableRow, TableCell, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 
 import "../../App.css";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { addBookmark, removeBookmark } from "../../redux/action";
+import { Country, GetComparator, StableSort } from "../../types";
+import { InitialState } from "../../redux/store";
+
+type TableBodyProps = {
+  countries: Country[];
+  page: number;
+  rowsPerPage: number;
+  order: "asc" | "desc";
+  orderBy: string;
+  stableSort: StableSort;
+  getComparator: GetComparator;
+};
 
 function CountryTableBody({
   countries,
@@ -17,11 +27,13 @@ function CountryTableBody({
   orderBy,
   stableSort,
   getComparator,
-}) {
-  const bookmarkCountries = useSelector((state) => state.bookmarkCountries);
+}: TableBodyProps) {
+  const bookmarkCountries = useSelector(
+    (state: InitialState) => state.bookmarkCountries
+  );
   const dispatch = useDispatch();
 
-  const ToggleBookmark = (countryName) => {
+  const ToggleBookmark = (countryName: string) => {
     if (bookmarkCountries.includes(countryName)) {
       dispatch(removeBookmark(countryName));
     } else {
@@ -43,7 +55,7 @@ function CountryTableBody({
     <TableBody>
       {stableSort(countries, getComparator(order, orderBy))
         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-        .map((country) => (
+        .map((country: Country) => (
           <TableRow key={country.name.common}>
             <TableCell align="center">
               <img src={country.flags.png} height={30} width={45} alt="Flag" />
@@ -67,7 +79,7 @@ function CountryTableBody({
             <TableCell align="center">
               <Button onClick={() => ToggleBookmark(country.name.common)}>
                 {bookmarkCountries.includes(country.name.common) ? (
-                  <StarIcon color="active" />
+                  <StarIcon color="primary" />
                 ) : (
                   <StarIcon color="disabled" />
                 )}

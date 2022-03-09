@@ -9,6 +9,7 @@ body {
   width: 70%;
   margin: auto;
 }
+
 .container_header {
   padding-bottom: 30px;
 }
@@ -16,6 +17,7 @@ body {
 .title {
   font-size: 48px;
 }
+
 .subtitle {
   font-weight: normal;
 }

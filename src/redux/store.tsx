@@ -3,7 +3,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import reducer from "./reducer";
 
-const initialState = {
+export type InitialState = {
+  bookmarkCountries: string[];
+};
+
+const initialState: InitialState = {
   bookmarkCountries: [],
 };
 

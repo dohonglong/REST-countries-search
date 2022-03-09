@@ -12,11 +12,14 @@ import GoBackButton from "../buttons/GoBackButton";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addBookmark, removeBookmark } from "../../redux/action";
+import { InitialState } from "../../redux/store";
 
 function CountryPage() {
   const { name } = useParams();
-  const [country, error] = useCountry(name);
-  const bookmarkCountries = useSelector((state) => state.bookmarkCountries);
+  const [country, error] = useCountry(name as string);
+  const bookmarkCountries = useSelector(
+    (state: InitialState) => state.bookmarkCountries
+  );
   const dispatch = useDispatch();
 
   const ToggleBookmarkCountry = (country) => {
@@ -50,7 +53,7 @@ function CountryPage() {
       </div>
       <Button onClick={() => ToggleBookmarkCountry(country.name.common)}>
         {bookmarkCountries.includes(country.name.common) ? (
-          <StarIcon fontSize="large" color="active" />
+          <StarIcon fontSize="large" color="primary" />
         ) : (
           <StarIcon fontSize="large" color="disabled" />
         )}

@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { Country } from "../types";
+
+type Return = [Country[], Error | null, any];
+
 // This hook is used to fetch all countries
-const useCountries = () => {
-  const [countries, setCountries] = useState([]);
-  const [error, setError] = useState(null);
+const useCountries = (): Return => {
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -11,7 +15,7 @@ const useCountries = () => {
         const data = await response.json();
         setCountries(data);
       } catch (error) {
-        setError(error);
+        setError(error as Error);
       }
     };
 

@@ -1,10 +1,19 @@
-import { ADD_BOOKMARK, REMOVE_BOOKMARK, CLEAR_BOOKMARK } from "./action";
+import {
+  ADD_BOOKMARK,
+  REMOVE_BOOKMARK,
+  CLEAR_BOOKMARK,
+  Actions,
+} from "./action";
 
-const initialState = {
+type InitState = {
+  bookmarkCountries: string[];
+};
+
+const initialState: InitState = {
   bookmarkCountries: [],
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: Actions): InitState => {
   switch (action.type) {
     case ADD_BOOKMARK:
       const countryName = action.payload;
