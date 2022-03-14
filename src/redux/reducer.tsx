@@ -5,7 +5,7 @@ import {
   Actions,
 } from "./action";
 
-type InitState = {
+export type InitState = {
   bookmarkCountries: string[];
 };
 

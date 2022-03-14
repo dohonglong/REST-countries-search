@@ -8,12 +8,15 @@ import ClearAllButton from "../buttons/ClearAllButton";
 import { removeBookmark, clearBookmark } from "../../redux/action";
 import BookmarkDetails from "./BookmarkDetails";
 import Grid from "@mui/material/Grid";
+import { Country, RootState } from "../../types";
 
 function Bookmarks() {
-  const bookmarkCountries = useSelector((state) => state.bookmarkCountries);
+  const bookmarkCountries = useSelector(
+    (state: RootState) => state.bookmarkCountries
+  );
   const dispatch = useDispatch();
 
-  const removeBookmarkCountry = (country) => {
+  const removeBookmarkCountry = (country: Country["name"]["common"]) => {
     dispatch(removeBookmark(country));
   };
 

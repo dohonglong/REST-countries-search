@@ -1,15 +1,13 @@
 import { useParams } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
 import { TableContainer, Table, Button } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-
-import useCountry from "../../custom-hooks/useCountry";
 
 import "../../App.css";
 import CountryDetail from "./CountryDetail";
 import GoBackButton from "../buttons/GoBackButton";
 
-import { useDispatch, useSelector } from "react-redux";
+import useCountry from "../../custom-hooks/useCountry";
 
 import { addBookmark, removeBookmark } from "../../redux/action";
 import { InitialState } from "../../redux/store";
@@ -22,7 +20,7 @@ function CountryPage() {
   );
   const dispatch = useDispatch();
 
-  const ToggleBookmarkCountry = (country) => {
+  const ToggleBookmarkCountry = (country: string) => {
     if (bookmarkCountries.includes(country)) {
       dispatch(removeBookmark(country));
     } else {
