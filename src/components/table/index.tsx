@@ -12,10 +12,11 @@ import BookmarksButton from "../buttons/BookmarksButton";
 import { Country, Order, OrderBy } from "../../types";
 
 function CountryTable() {
-  const rowsPerPage = 10;
   const [countries, error] = useCountries();
   const [countriesUpdated, errorUpdated, setCountriesUpdated] = useCountries();
+
   const [page, setPage] = useState(0);
+  const rowsPerPage = 10;
 
   const [order, setOrder] = useState<Order>("asc");
   const [orderBy, setOrderBy] = useState<OrderBy>("name");
