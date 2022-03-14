@@ -1,6 +1,7 @@
 import { TableBody, TableRow, TableCell } from "@mui/material";
+import { Country } from "../../types";
 
-function CountryDetail({ country }) {
+function CountryDetail(country: Country) {
   return (
     <TableBody>
       <TableRow>

@@ -1,31 +1,33 @@
+import reducer from "./redux/reducer";
+
 export type Country = {
   flags: {
     png: string;
   };
   name: {
     common: string;
+    official: string;
   };
   capital: string[];
   region: string;
   population: number;
+  subregion: string;
+  timezones: string[];
+  area: number;
+  languages: { [key: string]: string };
 };
 
-type Order = "desc" | "asc";
+export type Order = "desc" | "asc";
+export type OrderBy = "name" | "capital" | "population" | "region";
 
-export type DescendingComparator = (
-  a: Country,
-  b: Country,
-  orderBy: string
-) => any;
+export type RootState = ReturnType<typeof reducer>;
 
 export type GetComparator = (
   order: Order,
-  orderBy: string
-) => DescendingComparator;
+  orderBy: OrderBy
+) => (a: Country, b: Country) => number;
 
 export type StableSort = (
   countries: Country[],
-  getComparator: GetComparator
+  comparator: (a: Country, b: Country) => number
 ) => Country[];
-
-export type OrderBy = "name" | "capital" | "population" | "region" | "flags";

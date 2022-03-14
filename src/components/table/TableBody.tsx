@@ -6,15 +6,21 @@ import StarIcon from "@mui/icons-material/Star";
 import "../../App.css";
 
 import { addBookmark, removeBookmark } from "../../redux/action";
-import { Country, GetComparator, StableSort } from "../../types";
+import {
+  Country,
+  GetComparator,
+  Order,
+  OrderBy,
+  StableSort,
+} from "../../types";
 import { InitialState } from "../../redux/store";
 
-type TableBodyProps = {
+export type TableBodyProps = {
   countries: Country[];
   page: number;
   rowsPerPage: number;
-  order: "asc" | "desc";
-  orderBy: string;
+  order: Order;
+  orderBy: OrderBy;
   stableSort: StableSort;
   getComparator: GetComparator;
 };

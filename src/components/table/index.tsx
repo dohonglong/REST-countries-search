@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { TableContainer, Table } from "@mui/material";
 
 import useCountries from "../../custom-hooks/useCountries";
@@ -10,7 +9,7 @@ import CountryTableBody from "./TableBody";
 import CountryTablePagination from "./TablePagination";
 import SearchBar from "./SearchBar";
 import BookmarksButton from "../buttons/BookmarksButton";
-import { Country, GetComparator, OrderBy } from "../../types";
+import { Country, Order, OrderBy } from "../../types";
 
 function CountryTable() {
   const [countries, error] = useCountries();
@@ -18,11 +17,14 @@ function CountryTable() {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [page, setPage] = useState(0);
 
-  const [order, setOrder] = useState("asc");
-  const [orderBy, setOrderBy] = useState("name");
+  const [order, setOrder] = useState<Order>("asc");
+  const [orderBy, setOrderBy] = useState<OrderBy>("name");
 
   /* For sorting */
-  const handleRequestSort = (event, property) => {
+  const handleRequestSort = (
+    event: React.MouseEvent<unknown>,
+    property: OrderBy
+  ) => {
     const isAscending = orderBy === property && order === "asc";
     setOrder(isAscending ? "desc" : "asc");
     setOrderBy(property);
@@ -64,8 +66,13 @@ function CountryTable() {
       : (a: Country, b: Country) => -descendingComparator(a, b, orderBy);
   }
 
-  function stableSort(countries: Country[], comparator: GetComparator) {
-    const stabilizedThis = countries.map((el, index) => [el, index]);
+  function stableSort(
+    countries: Country[],
+    comparator: (a: Country, b: Country) => number
+  ) {
+    const stabilizedThis = countries.map(
+      (el, index) => [el, index] as [Country, number]
+    );
     stabilizedThis.sort((a, b) => {
       const order = comparator(a[0], b[0]);
       if (order !== 0) {
@@ -82,7 +89,7 @@ function CountryTable() {
   }
 
   /* Get input from search bar*/
-  const handleInput = (event) => {
+  const handleInput = (event: { target: { value: string } }) => {
     const result = event.target.value.toLowerCase();
     const countryFiltered = countries.filter((country) => {
       return country.name.common.toLowerCase().includes(result);
