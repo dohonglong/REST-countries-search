@@ -16,11 +16,11 @@ export type Country = {
   area: number;
   languages: { [key: string]: string };
 };
-
+export type RootState = ReturnType<typeof reducer>;
 export type Order = "desc" | "asc";
 export type OrderBy = "name" | "capital" | "population" | "region";
-
-export type RootState = ReturnType<typeof reducer>;
+export type SetPage = (newPage: number) => void;
+export type SetRowsPerPage = () => void;
 
 export type GetComparator = (
   order: Order,
@@ -31,3 +31,14 @@ export type StableSort = (
   countries: Country[],
   comparator: (a: Country, b: Country) => number
 ) => Country[];
+
+export type HandleRequestSort = (
+  event: React.MouseEvent<unknown>,
+  property: OrderBy
+) => void;
+
+export type HandelInput = (event: { target: { value: string } }) => void;
+
+export type RemoveBookmarkCountry = (country: string) => void;
+
+export type RemoveAll = () => void;

@@ -15,7 +15,7 @@ import {
 } from "../../types";
 import { InitialState } from "../../redux/store";
 
-export type TableBodyProps = {
+type TableBodyProps = {
   countries: Country[];
   page: number;
   rowsPerPage: number;
