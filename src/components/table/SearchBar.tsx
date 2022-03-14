@@ -1,6 +1,11 @@
 import TextField from "@mui/material/TextField";
+import { HandelInput } from "../../types";
 
-const SearchBar = ({ handleInput }) => {
+type SearchBarProps = {
+  handleInput: HandelInput;
+};
+
+const SearchBar = ({ handleInput }: SearchBarProps) => {
   return (
     <div>
       <TextField

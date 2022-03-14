@@ -1,8 +1,17 @@
 import { TableBody, TableRow, TableCell, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
+import { RemoveBookmarkCountry } from "../../types";
 
-function BookmarkDetails({ bookmarkCountries, removeBookmarkCountry }) {
+type BookmarkDetailsProp = {
+  bookmarkCountries: string[];
+  removeBookmarkCountry: RemoveBookmarkCountry;
+};
+
+function BookmarkDetails({
+  bookmarkCountries,
+  removeBookmarkCountry,
+}: BookmarkDetailsProp) {
   const linkStyle = {
     color: "blue",
     fontWeight: "bold",

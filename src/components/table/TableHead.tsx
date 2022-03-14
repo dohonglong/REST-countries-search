@@ -1,14 +1,26 @@
 import { TableHead, TableRow, TableCell, TableSortLabel } from "@mui/material";
+import { HandleRequestSort, Order, OrderBy } from "../../types";
 
-function CountryTableHead({ orderBy, order, handleRequestSort }) {
+type CountryTableHeadProps = {
+  order: Order;
+  orderBy: OrderBy;
+  handleRequestSort: HandleRequestSort;
+};
+
+function CountryTableHead({
+  order,
+  orderBy,
+  handleRequestSort,
+}: CountryTableHeadProps) {
   const style = {
     fontSize: "18px",
     fontWeight: "bold",
   };
 
-  const createSortHandler = (property) => (event) => {
-    handleRequestSort(event, property);
-  };
+  const createSortHandler =
+    (property: OrderBy) => (event: React.MouseEvent<unknown>) => {
+      handleRequestSort(event, property);
+    };
 
   return (
     <TableHead>
