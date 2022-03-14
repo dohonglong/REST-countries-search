@@ -18,13 +18,16 @@ Users are able to bookmark favorite country/countries. They can be seen in the b
 
 ## References
 
-[Demo](longdo-rest-countries-search.netlify.app/)
+[Demo](https://longdo-rest-countries-search.netlify.app)
 
 Homepage:
+
 ![homepage](media/homepage.png)
 
 Bookmark page:
+
 ![bookmark](media/bookmarkpage.png)
 
 Country page:
+
 ![country page](media/countrypage.png)
