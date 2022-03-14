@@ -10,7 +10,7 @@ Users can search the country that they are looking for by using the search bar. 
 
 ### Sorting
 
-Sort countries list by name, population, capital and region. Default sorting is by name.
+Sort countries list by name, population, capital and region, either ascending or descending. Default sorting is by name, ascending.
 
 ### Display bookmark countries
 
